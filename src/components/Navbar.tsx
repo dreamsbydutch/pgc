@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { useActivePath } from '@/lib/hooks/useActivePath'
-import { cn } from '@/utils/utils'
+import { cn } from '@/lib/utils'
 
 export default function MobileNav() {
 	const checkActivePath = useActivePath()
