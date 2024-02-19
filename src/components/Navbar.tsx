@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { useActivePath } from '@/utils/hooks/useActivePath'
+import { useActivePath } from '@/lib/hooks/useActivePath'
 import { cn } from '@/utils/utils'
 
 export default function MobileNav() {
