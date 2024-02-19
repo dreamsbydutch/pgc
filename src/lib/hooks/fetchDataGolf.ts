@@ -22,8 +22,10 @@ const apiKey = process.env.NEXT_PUBLIC_API_KEY
 
 const fetchDataGolf = async ({ endpoint, options }:{endpoint:apiEndpoints,options:apiOptions}) => {
     let optionString = ''
+    const fetchString = 'https://feeds.datagolf.com/' + endpoint + '?' + optionString + 'key=' + apiKey
+    console.log(fetchString)
 	try {
-		const data = await fetch('https://feeds.datagolf.com/' + endpoint + '?' + optionString + 'key=' + apiKey)
+		const data = await fetch(fetchString)
         console.log(data)
 		return data.json()
 	} catch (error) {
