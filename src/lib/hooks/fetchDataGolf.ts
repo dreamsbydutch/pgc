@@ -27,7 +27,7 @@ const fetchDataGolf = async ({ endpoint, options }:{endpoint:apiEndpoints,option
 	try {
 		const data = await fetch(fetchString)
         console.log(data)
-		return data.json()
+		return data
 	} catch (error) {
 		return error
 	}
