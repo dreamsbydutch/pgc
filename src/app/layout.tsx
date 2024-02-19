@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter as FontSans, Varela_Round, Yellowtail, Barlow_Condensed } from 'next/font/google'
+import { Inter as FontSans, Varela_Round } from 'next/font/google'
 import './globals.css'
 import MobileNav from '@/components/MobileNav'
 import { cn } from '@/utils/utils'
@@ -14,16 +14,16 @@ export const varelaRound = Varela_Round({
 	subsets: ['latin'],
 	variable: '--varela',
 })
-export const yellowtail = Yellowtail({
-	weight: '400',
-	subsets: ['latin'],
-	variable: '--yellowtail',
-})
-export const barlowCondensed = Barlow_Condensed({
-	weight: '400',
-	subsets: ['latin'],
-	variable: '--barlow-condensed',
-})
+// export const yellowtail = Yellowtail({
+// 	weight: '400',
+// 	subsets: ['latin'],
+// 	variable: '--yellowtail',
+// })
+// export const barlowCondensed = Barlow_Condensed({
+// 	weight: '400',
+// 	subsets: ['latin'],
+// 	variable: '--barlow-condensed',
+// })
 
 export const metadata: Metadata = {
 	title: 'PGC Tour',
