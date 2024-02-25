@@ -49,7 +49,7 @@ export const useTournaments = (): TournamentsOutput => {
 		queryKey: ['getTournaments',bookName,sheetName],
 		queryFn: () => fetchSheets({bookName,sheetName}),
 	})
-	if (data.isLoading || data.isError) {
+	if (!data.data) {
 		return {
 			all: [],
 			current: undefined,

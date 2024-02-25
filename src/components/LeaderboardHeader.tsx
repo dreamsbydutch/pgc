@@ -10,7 +10,7 @@ export default function LeaderboardHeader({ tourney }: { tourney: Tournament }) 
 	const allTourneys = useTournaments()
 	return (
 		<div id="leaderboard-header">
-			<div className="grid grid-flow-row grid-cols-10 border-b-2 border-gray-800 mx-auto bg-red-400 py-2">
+			<div className="grid grid-flow-row grid-cols-10 border-b-2 border-gray-800 mx-auto py-2">
 				<div className="text-center font-varela place-self-center py-2 px-1 col-span-3 row-span-4 max-h-40">
 					<Image src={tourney.Logo} className="max-h-36" alt={`${tourney.Tourney} logo`} width={150} height={150} />
 				</div>

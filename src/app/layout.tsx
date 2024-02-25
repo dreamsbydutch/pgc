@@ -21,7 +21,7 @@ export default function RootLayout({
 			<body className={cn('font-varela', fontSans.variable, varelaRound.variable, yellowtail.variable, barlowCondensed.variable)}>
 				<Provider>
 					<div className="mx-2">
-						<div className="mx-auto mt-4 pb-8 mb-24 max-w-4xl rounded-3xl shadow-lg">{children}</div>
+						<div className="mx-auto mt-4 pb-8 mb-24 max-w-4xl">{children}</div>
 					</div>
 					<MobileNav />
 				</Provider>
