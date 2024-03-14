@@ -13,8 +13,8 @@ export default function MobileNav() {
 			<ul className="w-full h-[72px] bg-gray-200 shadow-inv flex justify-evenly items-center fixed bottom-0 z-20">
 				{navigation.map(({ href, icon: Icon, activeClass }, i) => (
 					<>
-						{i !== 0 && <span key={'split-' + i} className="h-4/6 border border-gray-400" />}
-						<li key={href}>
+						{i !== 0 && <span key={`split-${i}`} className="h-4/6 border border-gray-400" />}
+						<li key={`logo-${i}`}>
 							<Link href={href} className={cn(checkActivePath(href) ? activeClass : '')}>
 								<Icon />
 							</Link>

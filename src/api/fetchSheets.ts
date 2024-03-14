@@ -5,7 +5,7 @@ const book_ids = {
 	inputs: '1SSk7lg3Ym17lw8Hn-yZvT_erE9umRHPlrZJ8U4faBMY',
 	outputs: '1I3sq1tm1Wn6uIDcp8_3Uede4Qlj_WFNWMh1KJLtlYr0',
 }
-const fetchSheets = async ({ bookName, sheetName }:{bookName:'outputs'|'inputs',sheetName:String}) => {
+export const fetchSheets = async ({ bookName, sheetName }:{bookName:'outputs'|'inputs',sheetName:String}) => {
 	try {
 		const data = await fetch('https://opensheet.elk.sh/' + book_ids[bookName] + '/' + sheetName)
 		return data.json()
