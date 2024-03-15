@@ -28,7 +28,7 @@ export default function RulebookPage() {
 function RuleCategory({ ruleData, i }: { ruleData: [string, (string | [string, string[]])[]]; i: number }) {
 	const [showState, setShowState] = useState(false)
 	return (
-		<div className="max-w-[65vw] py-2 mx-auto" onClick={() => setShowState(!showState)}>
+		<div className="py-2 mx-auto" onClick={() => setShowState(!showState)}>
 			<div className="text-center font-varela font-extrabold text-2xl py-3">
 				{ruleData[0]}
 				<span className="inline-flex pl-2">{showState ? <ChevronUpIcon /> : <ChevronDownIcon />}</span>
@@ -38,7 +38,6 @@ function RuleCategory({ ruleData, i }: { ruleData: [string, (string | [string, s
 					if (typeof rule === 'string') {
 						return (
 							<div key={i + '.' + j} className="py-2 text-sm xs:text-base text-center">
-								{/* <span className="font-semibold pr-3">{`${i + 1}.${j + 1}`}</span> */}
 								{rule}
 							</div>
 						)
@@ -46,14 +45,12 @@ function RuleCategory({ ruleData, i }: { ruleData: [string, (string | [string, s
 					return (
 						<div key={i + '.' + j} className="py-2">
 							<div className="text-sm xs:text-base font-bold text-center">
-								{/* <span className="pr-3">{`${i + 1}.${j + 1}`}</span> */}
 								{rule[0]}
 							</div>
 							<div className="pt-1">
 								{rule[1].map((subrule, k) => {
 									return (
 										<div key={`${i + 1}.${j + 1}.${k + 1}`} className="text-sm sm:text-base text-center py-1">
-											{/* <span className="text-xs font-bold pr-2">{`${i + 1}.${j + 1}.${k + 1}`}</span> */}
 											{subrule}
 										</div>
 									)

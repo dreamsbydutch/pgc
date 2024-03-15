@@ -1,10 +1,11 @@
 import { type ClassValue, clsx } from "clsx"
-import { useCallback, useEffect, useState } from "react"
+import { ReactNode, useCallback, useEffect, useState } from "react"
 import { twMerge } from "tailwind-merge"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
+export function delay(ms: number) {new Promise(res => setTimeout(res, ms))}
 
 export function useCallbackQueryString(searchParams: URLSearchParams) {
   const createQueryString = useCallback(
@@ -17,38 +18,6 @@ export function useCallbackQueryString(searchParams: URLSearchParams) {
     [searchParams]
   )
 
-}
-
-
-
-export function getRkChange(rkChange: number) : {
-  'change':number
-  'arrow':string
-  'style': {
-    'color': string
-  }
-} {
-  if (+(rkChange) > 0)  return {
-    'change' : Math.abs(rkChange),
-    'arrow' : 'fa-long-arrow-up',
-    'style' : {
-      color: 'rgb(0,128,0)',
-    },
-  }
-  if (+(rkChange) < 0) return {
-    'change' : Math.abs(rkChange),
-    'arrow' : 'fa-long-arrow-down',
-    'style' : {
-      color: 'rgb(178,34,34)',
-    },
-  }
-  return {
-    'change' : Math.abs(rkChange),
-    'arrow' : 'fa-arrows-h',
-    'style' : {
-      color: '',
-    },
-  }
 }
 
 

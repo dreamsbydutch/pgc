@@ -1,39 +1,24 @@
 'use client'
 
-import { formatMoney, getRkChange } from '@/lib/utils'
+import { Tournament } from '@/api/fetchSheets'
+import { StandingTeam } from '@/lib/inputTypes'
+import { formatMoney } from '@/lib/utils'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
+import { rankChange } from './ui/rankChange'
 
-type RankChange = {
-	change: number
-	arrow: string
-	style: {
-		color: string
-	}
-}
-
-export default function StandingsItem({ info, tourneys }: { info: any; tourneys: any }) {
+export default function StandingsItem({ info, tourneys, i }: { info: StandingTeam; tourneys: Tournament[]; i: number }) {
 	const [showInfo, setShowInfo] = useState(false)
-	const showRkChange = ({ style, arrow, change }: RankChange) => {
-		return (
-			<span className="utils-rankchange" style={style}>
-				<span className="utils-rkchange-arrow">
-					<i className={`fa ${arrow}`}></i>
-				</span>
-				{Math.abs(change) === 0 ? '' : Math.abs(change)}
-			</span>
-		)
-	}
 
 	return (
 		// <div className="" onClick={() => setShowInfo(!showInfo)}>
 		<div
-			className="[&:nth-child(17)]:border-t-2 [&:nth-child(17)]:border-yellow-600 [&:nth-child(32)]:border-t-2 [&:nth-child(32)]:border-gray-600"
+			className={`[&:nth-child(17)]:border-t-2 [&:nth-child(17)]:border-yellow-600 [&:nth-child(32)]:border-t-2 [&:nth-child(32)]:border-gray-600`}
 			onClick={() => setShowInfo(!showInfo)}>
 			<div className="grid grid-flow-row grid-cols-8 text-center py-1 md:py-2 border-t border-dashed border-t-gray-400">
-				<div className="font-varela place-self-center text-2xs xs:text-xs sm:text-sm md:text-md lg:text-lg">
-					{info.ShowRk} {showRkChange(getRkChange(info.RkChange))}
+				<div className="flex font-varela place-self-center text-2xs xs:text-xs sm:text-sm md:text-base lg:text-lg">
+					{info.ShowRk} {rankChange(+info.RkChange)}
 				</div>
 				<div className="font-varela place-self-center text-base sm:text-lg md:text:xl lg:text-2xl col-span-4 [&>:nth-child(1)]:ml-1.5">
 					{info.TeamName}
@@ -55,7 +40,7 @@ export default function StandingsItem({ info, tourneys }: { info: any; tourneys:
 					)}
 				</div>
 				<div className="font-varela place-self-center text-xs col-span-2 2xs:text-sm sm:text-base md:text-lg lg:text-xl">{info.Points}</div>
-				<div className="font-varela place-self-center text-2xs xs:text-xs sm:text-sm md:text-base lg:text-lg">{formatMoney(info.Earnings)}</div>
+				<div className="font-varela place-self-center text-2xs xs:text-xs sm:text-sm md:text-base lg:text-lg">{formatMoney(+info.Earnings)}</div>
 			</div>
 			{showInfo ? <StandingsItemInfo info={info} tourneys={tourneys} /> : <></>}
 		</div>

@@ -47,18 +47,6 @@ export default function LeaderboardHeader({ tourney }: { tourney: Tournament }) 
 	)
 }
 
-// function HeaderDropdown() {
-// 	return (
-// 		<DropdownMenu.Root>
-// 			<DropdownMenu.Trigger />
-// 			<DropdownMenu.Portal>
-// 				<DropdownMenu.Content>
-// 					<DropdownMenu.Label>Text123</DropdownMenu.Label>
-// 				</DropdownMenu.Content>
-// 			</DropdownMenu.Portal>
-// 		</DropdownMenu.Root>
-// 	)
-// }
 const HeaderDropdown = ({ tourneys, activeID }: { tourneys: Tournament[]; activeID: number }) => {
 	const groupedTourneys = [
 		tourneys.filter(obj => obj.Class === 'Major'),

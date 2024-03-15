@@ -1,5 +1,9 @@
-import React from 'react'
+import LoadingSpinner from '@/components/ui/loadingSpinner'
 
 export default function LoadingPage() {
-	return <div>q1345356454</div>
+	return (
+		<div className="items-center justify-center w-full h-max">
+			<LoadingSpinner />
+		</div>
+	)
 }

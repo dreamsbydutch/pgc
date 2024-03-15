@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import MobileNav from '@/components/ui/MobileNav'
 import Provider from './_provider'
 import { barlowCondensed, fontSans, varelaRound, yellowtail } from '@/lib/fonts'
+import MobileNav from '@/components/ui/MobileNav'
 
 export const metadata: Metadata = {
 	title: 'PGC Tour',
