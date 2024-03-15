@@ -8,7 +8,7 @@ const book_ids = {
 }
 export const fetchSheets = async ({ bookName, sheetName }:{bookName:'outputs'|'inputs',sheetName:String}) => {
 	try {
-		const data = await fetch('https://opensheet.elk.sh/' + book_ids[bookName] + '/' + sheetName)
+		const data = await fetch('https://opensheet.elk.sh/' + book_ids[bookName] + '/' + sheetName, { next: { revalidate: 3600 } })
 		return data.json()
 	} catch (error) {
 		return error
