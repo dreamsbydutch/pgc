@@ -1,4 +1,4 @@
-import { Tournament, useTournaments } from '@/api/fetchSheets'
+import { Tournament, TournamentsOutput, useTournaments } from '@/api/fetchSheets'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import Image from 'next/image'
 import { ChevronDown } from 'lucide-react'
@@ -19,7 +19,7 @@ export default function LeaderboardHeader({ tourney }: { tourney: Tournament }) 
 				</div>
 
 				<div className="row-span-1 col-span-2 font-varela text-xs text-center place-self-center xs:text-sm md:text-lg lg:text-xl">
-					<HeaderDropdown tourneys={allTourneys.all} activeID={tourney.tourneyID} />
+					<HeaderDropdown tourneys={allTourneys} activeID={tourney.tourneyID} />
 				</div>
 				<div className="row-span-1 col-span-2 font-varela text-xs text-center place-self-center xs:text-sm md:text-lg lg:text-xl">
 					{tourney.Dates}
@@ -47,12 +47,19 @@ export default function LeaderboardHeader({ tourney }: { tourney: Tournament }) 
 	)
 }
 
-const HeaderDropdown = ({ tourneys, activeID }: { tourneys: Tournament[]; activeID: number }) => {
-	const groupedTourneys = [
-		tourneys.filter(obj => obj.Class === 'Major'),
-		tourneys.filter(obj => obj.Class === 'Mid'),
-		tourneys.filter(obj => obj.Class === 'Bottom'),
-	]
+const HeaderDropdown = ({ tourneys, activeID }: { tourneys: TournamentsOutput; activeID: number }) => {
+	const groupedTourneys = tourneys.current
+		? [
+				[tourneys.current],
+				tourneys.all.filter(obj => obj.Class === 'Major'),
+				tourneys.all.filter(obj => obj.Class === 'Mid'),
+				tourneys.all.filter(obj => obj.Class === 'Bottom'),
+		  ]
+		: [
+				tourneys.all.filter(obj => obj.Class === 'Major'),
+				tourneys.all.filter(obj => obj.Class === 'Mid'),
+				tourneys.all.filter(obj => obj.Class === 'Bottom'),
+		  ]
 	return (
 		<DropdownMenu.Root>
 			<DropdownMenu.Trigger asChild>
@@ -69,7 +76,9 @@ const HeaderDropdown = ({ tourneys, activeID }: { tourneys: Tournament[]; active
 						return (
 							<>
 								{i !== 0 && <DropdownMenu.Separator key={`sep-${i}`} className="h-[1px] bg-slate-700 m-1" />}
-								<DropdownMenu.Label className="xs:text-lg font-bold text-center">{group[0].Class}</DropdownMenu.Label>
+								<DropdownMenu.Label className="xs:text-lg font-bold text-center">
+									{groupedTourneys.length === 4 && i === 0 ? 'Live' : group[0].Class}
+								</DropdownMenu.Label>
 								{group.map(tourney => {
 									return (
 										<DropdownMenu.Item

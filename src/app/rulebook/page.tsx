@@ -9,10 +9,7 @@ export default function RulebookPage() {
 			<div className="font-yellowtail font-extrabold text-5xl pt-2 pb-4 text-center">Rulebook</div>
 			<div className="w-full mx-auto border-b border-2 border-slate-600"></div>
 			{rulebook.map((section, i) => (
-				<>
-					<RuleCategory {...{ ruleData: section, i }} />
-					<div className="w-4/6 mx-auto border-b border-2 border-slate-600"></div>
-				</>
+				<RuleCategory key={i} {...{ ruleData: section, i }} />
 			))}
 			<Image
 				src="https://raw.githubusercontent.com/dreamsbydutch/pgctour/main/public/assets/2024PGC-schedule.png"
@@ -28,7 +25,7 @@ export default function RulebookPage() {
 function RuleCategory({ ruleData, i }: { ruleData: [string, (string | [string, string[]])[]]; i: number }) {
 	const [showState, setShowState] = useState(false)
 	return (
-		<div className="py-2 mx-auto" onClick={() => setShowState(!showState)}>
+		<div className="py-2 mx-auto border-b-2 border-slate-500" onClick={() => setShowState(!showState)}>
 			<div className="text-center font-varela font-extrabold text-2xl py-3">
 				{ruleData[0]}
 				<span className="inline-flex pl-2">{showState ? <ChevronUpIcon /> : <ChevronDownIcon />}</span>
@@ -44,18 +41,16 @@ function RuleCategory({ ruleData, i }: { ruleData: [string, (string | [string, s
 					}
 					return (
 						<div key={i + '.' + j} className="py-2">
-							<div className="text-sm xs:text-base font-bold text-center">
-								{rule[0]}
-							</div>
-							<div className="pt-1">
+							<div className="text-sm xs:text-base font-bold text-center">{rule[0]}</div>
+							<ul className="pt-1">
 								{rule[1].map((subrule, k) => {
 									return (
-										<div key={`${i + 1}.${j + 1}.${k + 1}`} className="text-sm sm:text-base text-center py-1">
+										<li key={`${i + 1}.${j + 1}.${k + 1}`} className="text-sm sm:text-base text-center py-1">
 											{subrule}
-										</div>
+										</li>
 									)
 								})}
-							</div>
+							</ul>
 						</div>
 					)
 				})}
@@ -106,9 +101,9 @@ const rulebook: [string, (string | [string, string[]])[]][] = [
 		'Playoffs',
 		[
 			'After every tournament of the season the top 35 finishers will receive playoff points.',
-			'Major tournaments have a total points purse of 4325 points with the winner taking 1000 points.',
-			'Mid tier tournaments have a total points purse of 3150 points with the winner taking 750 points.',
-			'Bottom Tier tournaments have a total points purse of 1925 points with the winner taking 450 points.',
+			'Major tournaments have a total points purse of 4,325 points with the winner taking 1,000 points.',
+			'Mid tier tournaments have a total points purse of 3,150 points with the winner taking 750 points.',
+			'Bottom Tier tournaments have a total points purse of 1,925 points with the winner taking 450 points.',
 			'At the end of the regular season the top 35 players in the standings will make the PGC Playoff tournament.',
 			'Each team will start the playoff tournament at a starting score based on the distribution below.',
 			'The playoff tournament will be 12-rounds long throughout all three FedEx Cup Playoff events (FedEx-StJude Championship, BMW Championship, TOUR Championship).',

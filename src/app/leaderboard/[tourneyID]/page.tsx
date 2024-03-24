@@ -3,9 +3,11 @@
 import { Tournament, useTournaments } from '@/api/fetchSheets'
 import Countdown from '@/components/Countdown'
 import LeaderboardHeader from '@/components/LeaderboardHeader'
+import PGCLeaderboard from '@/components/TourLeaderboard'
 import { Skeleton } from '@/components/ui/skeleton'
 import { useParams } from 'next/navigation'
 import React from 'react'
+import { LiveLeaderboard } from '../_pgcLeaderboard'
 
 export default function LeaderboardWithID() {
 	let { tourneyID } = useParams()
@@ -25,6 +27,7 @@ export default function LeaderboardWithID() {
 		return (
 			<>
 				<LeaderboardHeader tourney={tourney} />
+				<LiveLeaderboard tourney={tourney} tourID={'pgc'} />
 			</>
 			// <TourneyLeaderboard
 			//     tourney={tourney}
